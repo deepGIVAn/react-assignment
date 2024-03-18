@@ -64,14 +64,26 @@ const Sidebar = () => {
         },
       };
 
-  const subMenusList = [
+  const subMenusList1 = [
     {
       name: "Events",
-      menus: ["New Requests", "Estimate", "Events", "Partial Requests"],
+      menus: [
+        { link: "/addevent", name: "New Requests" },
+        { link: "/", name: "Estimate" },
+        { link: "/", name: "Events" },
+        { link: "/", name: "Partial Requests" },
+      ],
     },
+  ];
+
+  const subMenusList2 = [
     {
-      name: "analytics",
-      menus: ["dashboard", "realtime", "events"],
+      name: "Users",
+      menus: [
+        { link: "/", name: "Admins" },
+        { link: "/", name: "Clients" },
+        { link: "/", name: "Coordinators" },
+      ],
     },
   ];
 
@@ -90,13 +102,25 @@ const Sidebar = () => {
           <ul className="text-[0.9rem] py-5 flex flex-col gap-1  font-medium overflow-x-hidden scrollbar-thin scrollbar-track-white scrollbar-thumb-slate-100">
             {(open || isTabletMid) && (
               <div className="">
-                {subMenusList?.map((menu) => (
+                {subMenusList1?.map((menu) => (
                   <div key={menu.name} className="flex flex-col gap-2">
                     <SubMenu data={menu} />
                   </div>
                 ))}
               </div>
             )}
+            <li className="text-lg font-medium ml-3">Positions</li>
+            <li className="text-lg font-medium ml-3">Contractors</li>
+            {(open || isTabletMid) && (
+              <div className="">
+                {subMenusList2?.map((menu) => (
+                  <div key={menu.name} className="flex flex-col gap-2">
+                    <SubMenu data={menu} />
+                  </div>
+                ))}
+              </div>
+            )}
+            <li className="text-lg font-medium ml-3">Profile</li>
           </ul>
           <div className="absolute bottom-0 rounded-lg w-full">
             <div className="relative">
